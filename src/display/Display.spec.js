@@ -27,4 +27,11 @@ describe('Display.js', () => {
         displayOpenLocked.getByText(/unlocked/i);
         displayOpenLocked.getByText(/open/i);
     })
+    it("renders the right colors closed unlocked", () => {
+        const { getByText } = render(<Display closed={true} locked={false} />);
+        const closedDisplay = getByText(/closed/i);
+        const unlockedDisplay = getByText(/unlocked/i);
+        expect(closedDisplay.className).toMatch(/red-led/i);
+        expect(unlockedDisplay.className).toMatch(/green-led/i)
+    })
 });
